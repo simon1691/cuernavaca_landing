@@ -1,0 +1,94 @@
+---
+const {
+  title,
+  description,
+  image,
+  buttonText,
+  id,
+  longdescription,
+  productSpects,
+} = Astro.props;
+---
+
+<!-- Tarjeta -->
+<div class="pt-10 h-full flex flex-col">
+  <div
+    class="border border-[#54545e] rounded-2xl flex flex-col h-full overflow-visible bg-[#000000]"
+  >
+    <!-- Imagen -->
+    <div class="relative w-full flex justify-center items-end h-[370px]">
+      <img
+        width="297"
+        height="446"
+        class="w-[297px] h-[446px] object-contain"
+        src={image}
+        alt={title}
+      />
+    </div>
+
+    <!-- Contenido -->
+    <div class="flex flex-col justify-between flex-grow p-8 text-[#EAEAFD]">
+      <h1 class="font-sans text-[20px] md:text-[28px] font-bold mb-2">
+        {title}
+      </h1>
+
+      <p class="font-sans mb-6 text-sm md:text-md">
+        {description}
+      </p>
+
+      <button
+        data-id={id}
+        data-title={title}
+        data-description={longdescription}
+        data-image={image}
+        data-titleproduct={productSpects.productTitle}
+        data-product={productSpects.product}
+        data-volumentitle={productSpects.volumeTitle}
+        data-volumen={productSpects.volumen}
+        data-alcoholtitle={productSpects.alcoholTitle}
+        data-alcohol={productSpects.alcohol}
+        data-presentationtitle={productSpects.presentationTitle}
+        data-presentation={productSpects.presentation}
+        class="OpenProductModal text-[#EAEAFD] underline cursor-pointer self-start text-sm md:text-md"
+      >
+        {buttonText}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("productModal");
+  const close = document.getElementById("close-modal");
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".OpenProductModal");
+
+    if (btn) {
+      modal?.classList.remove("hidden");
+      modal.querySelector("#title").textContent = btn.dataset.title;
+      modal.querySelector("#description").textContent = btn.dataset.description;
+      modal.querySelector("#productImage").src = btn.dataset.image;
+
+      modal.querySelector("#productTitle").textContent =
+        btn.dataset.titleproduct;
+      modal.querySelector("#product").textContent = btn.dataset.product;
+
+      modal.querySelector("#volumeTitle").textContent =
+        btn.dataset.volumentitle;
+      modal.querySelector("#volumen").textContent = btn.dataset.volumen;
+      modal.querySelector("#alcoholTitle").textContent =
+        btn.dataset.alcoholtitle;
+      modal.querySelector("#alcohol").textContent = btn.dataset.alcohol;
+      modal.querySelector("#presentationTitle").textContent =
+        btn.dataset.presentationtitle;
+      modal.querySelector("#presentation").textContent =
+        btn.dataset.presentation;
+    }
+  });
+
+  close?.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  });
+</script>

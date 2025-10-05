@@ -1,0 +1,296 @@
+---
+import ProductCard from "./ProductCard.astro";
+import Button from "./Button.astro";
+
+const collectionData = [
+  {
+    id: "tequila_blanco",
+    title: "TEQUILA BLANCO CUERNAVACA",
+    description:
+      "Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.",
+    longdescription: `Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.
+      Entre sus notas principales destacan: Agave, cítricos, melón, manzana y menta.
+      Con sabor ligeramente dulce y mineral, con una permanencia en boca de notas cítricas y sensación herbal fresca.`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Blanco 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_blanco.png",
+    buttonText: "Reserva la experiencia",
+  },
+  {
+    id: "tequila_blanco_rosado",
+    title: "TEQUILA BLANCO CUERNAVACA ROSADO",
+    description:
+      "Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales.",
+    longdescription: `Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales. Entre sus notas principales destacan: Agave, cítricos, melón, manzana y menta.
+    Con sabor ligeramente dulce y mineral, con una permanencia en boca de notas cítricas y sensación herbal fresca.`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Blanco Rosado 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_blanco_rosado.png",
+    buttonText: "Reserva la experiencia",
+  },
+  {
+    id: "tequila_reposado",
+    title: "TEQUILA REPOSADO CUERNAVACA",
+    description:
+      "Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.",
+    longdescription: `Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.
+    Aromas principales a naranja, plátano, nuez y madera ahumada.
+    Con sabor a agave cocido, vainilla y cacahuate tostado`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Reposado 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_reposado.png",
+    buttonText: "Reserva la experiencia",
+  },
+  {
+    id: "tequila_anejo",
+    title: "TEQUILA AÑEJO CUERNAVACA",
+    description:
+      "Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
+    longdescription: `Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.
+    Sabores a canela, caramelo y frutos rojos con un remanente especiado principalmente pimienta.`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Añejo 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_anejo.png",
+    buttonText: "Reserva la experiencia",
+  },
+  {
+    id: "tequila_anejo_cristalino",
+    title: "TEQUILA AÑEJO CRISTALINO CUERNAVACA",
+    description:
+      "Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
+    longdescription: `Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla. 
+Sabores a canela, caramelo y frutos rojos con un remanente especiado principalmente pimienta.`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Añejo Cristalino 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_anejo_cristalino.png",
+    buttonText: "Reserva la experiencia",
+  },
+  {
+    id: "tequila_extra_anejo",
+    title: "TEQUILA EXTRA AÑEJO CUERNAVACA",
+    description:
+      "Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana.",
+    longdescription: `Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana. 
+    En su sabor destaca fuerte carácter de azúcar quemada, humo, y vainilla, quedando en boca sensación de tabaco, frutos secos y un suave final de cacao.`,
+    productSpects: {
+      productTitle: "Producto",
+      product: "Tequila Extra Añejo 100% Agave azul",
+      volumeTitle: "Capacidad",
+      volumen: "700 ml",
+      alcoholTitle: "Alcohol",
+      alcohol: "36% Alc. Vol.",
+      presentationTitle: "Presentación",
+      presentation: "Botella",
+    },
+    imageUrl: "/tequila_extra_anejo.png",
+    buttonText: "Reserva la experiencia",
+  },
+];
+---
+
+<style>
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+</style>
+
+<section
+  id="coleccion"
+  class="flex justify-center w-full px-10 py-8 md:py-15 bg-black overflow-hidden scroll-mt-24 md:scroll-mt-2.5"
+>
+  <div class="flex flex-col gap-10 xl:max-w-[1400px] w-full">
+    <h1
+      class="mx-auto text-2xl md:text-5xl font-bold text-center text-[#EAEAFD] xl:max-w-[1130px] font-sans"
+    >
+      Nuestra colección
+    </h1>
+
+    <div class="w-full overflow-hidden">
+      <div
+        id="carousel"
+        class="w-full mx-auto flex justify-start md:justify-center overflow-x-auto snap-x snap-mandatory gap-5
+        md:grid md:grid-cols-[repeat(auto-fit,minmax(300px,300px))] md:grid-rows-[1fr]
+         md:overflow-visible xl:grid-cols-[repeat(auto-fit,minmax(300px,440px))]
+          scrollbar-hidden items-stretch"
+      >
+        {
+          collectionData.map((item) => (
+            <div
+              class="flex-shrink-0 snap-center w-full xl:w-auto h-auto flex items-stretch"
+              key={item.id}
+            >
+              <ProductCard
+                title={item.title}
+                description={item.description}
+                image={item.imageUrl}
+                buttonText={item.buttonText}
+                productSpects={item.productSpects}
+                longdescription={item.longdescription}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        id="carousel-indicators"
+        class="flex justify-center mt-6 gap-2 md:hidden"
+      >
+        {
+          collectionData.map((_, index) => (
+            <button
+              key={index}
+              class="w-2 h-2 rounded-full"
+              data-index={index}
+              aria-label={`Ir a ${index + 1}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const ACTIVE_COLOR = "bg-amber-300";
+    const INACTIVE_COLOR = "bg-gray-500";
+    const carousel = document.getElementById("carousel");
+    const indicators = Array.from(
+      document.querySelectorAll("#carousel-indicators button")
+    );
+    if (!carousel || indicators.length === 0) return;
+
+    const XL_BREAKPOINT_PX = 1280; // tailwind xl default
+
+    // calcula y hace el setup solo en mobile (o en pantallas < xl)
+    function setupCarousel() {
+      const isMobile = window.matchMedia(
+        `(max-width: ${XL_BREAKPOINT_PX - 1}px)`
+      ).matches;
+
+      // Si no es mobile, limpiamos listeners y ponemos indicador inicial
+      if (!isMobile) {
+        indicators.forEach((b, i) => {
+          b.classList.toggle(ACTIVE_COLOR, i === 0);
+        });
+        // no necesidad de scroll behavior en desktop
+        return;
+      }
+
+      const children = Array.from(carousel.children);
+      if (children.length === 0) return;
+
+      // click en indicadores -> scrollea a la tarjeta exacta
+      indicators.forEach((btn, i) => {
+        btn.onclick = () => {
+          const target = children[i];
+          if (!target) return;
+
+          // cálculo robusto: rect de child relativo al rect del carousel
+          const childRect = target.getBoundingClientRect();
+          const carouselRect = carousel.getBoundingClientRect();
+          const left = childRect.left - carouselRect.left + carousel.scrollLeft;
+
+          carousel.scrollTo({ left, behavior: "smooth" });
+
+          indicators.forEach((b) => b.classList.remove(ACTIVE_COLOR));
+          btn.classList.add(ACTIVE_COLOR);
+        };
+      });
+
+      // scroll listener -> detecta tarjeta centrada y actualiza indicadores
+      const onScroll = () => {
+        const carouselRect = carousel.getBoundingClientRect();
+        const viewportCenter = carousel.scrollLeft + carouselRect.width / 2;
+
+        let minDiff = Infinity;
+        let activeIndex = 0;
+
+        children.forEach((child, idx) => {
+          const childCenter = child.offsetLeft + child.offsetWidth / 2;
+          const diff = Math.abs(childCenter - viewportCenter);
+          if (diff < minDiff) {
+            minDiff = diff;
+            activeIndex = idx;
+          }
+        });
+
+        indicators.forEach((b, i) => {
+          b.classList.toggle(ACTIVE_COLOR, i === activeIndex);
+          b.classList.toggle(INACTIVE_COLOR, i !== activeIndex);
+        });
+      };
+
+      // attach
+      carousel.addEventListener("scroll", onScroll, { passive: true });
+
+      // marcar indicador inicial
+      onScroll();
+
+      // devolver una función para cleanup si se necesita
+      return () => {
+        carousel.removeEventListener("scroll", onScroll);
+        indicators.forEach((btn) => (btn.onclick = null));
+      };
+    }
+
+    // inicial setup y re-setup en resize/orientation
+    let cleanup = null;
+    function init() {
+      if (cleanup) cleanup();
+      cleanup = setupCarousel();
+    }
+    init();
+    window.addEventListener("resize", () => {
+      // pequeño debounce
+      clearTimeout(window._carouselResizeTimeout);
+      window._carouselResizeTimeout = setTimeout(init, 120);
+    });
+    window.addEventListener("orientationchange", () => setTimeout(init, 120));
+  })();
+</script>

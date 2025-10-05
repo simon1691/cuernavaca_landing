@@ -1,0 +1,144 @@
+---
+import Logo from "./Logos/Logo.astro";
+const links = [
+  { name: "Inicio", href: "#header" },
+  { name: "Historia", href: "#historia" },
+  { name: "Colección", href: "#coleccion" },
+  { name: "Ritual", href: "#ritual" },
+  { name: "Experiencias", href: "#experiencias" },
+];
+---
+
+<nav class="w-full z-30 relative">
+  <div class="hidden md:block bg-black">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <!-- Logo -->
+      <a href="/"><Logo /></a>
+
+      <!-- Desktop Links -->
+      <ul class="hidden md:flex items-center space-x-8 text-white">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} class="hover:text-gray-300 transition">
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <button
+            class="contact-button bg-white text-black px-5 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition"
+          >
+            Contacto
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="block md:hidden fixed top-0 left-0 w-full">
+    <div
+      class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 bg-black"
+    >
+      <!-- Logo -->
+      <a href="header" onClick={(e) => e.preventDefault()}><Logo /></a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <!-- Hamburguesa -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <button id="close-menu" class="text-white hidden">
+        <!-- X icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="w-8 h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div
+      id="mobile-menu"
+      class="fixed top-[96px] w-full h-[auto] bg-black text-white hidden flex-col px-10 pt-8 pb-10 z-30 border-t-2 border-white"
+    >
+      <ul class="flex flex-col items-start gap-6 text-lg">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="hover:text-gray-300 transition"
+                onClick={(e) => e.preventDefault()}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 px-5">
+        <button
+          class="w-full contact-button block bg-white text-black px-5 py-3 rounded-lg font-medium text-center hover:bg-gray-200 transition"
+        >
+          Contacto
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const contactButton = document.querySelectorAll(".contact-button");
+  const form = document.getElementById("contactFormContainer");
+
+  console.log(contactButton);
+
+  Array.from(contactButton)?.map((bnt) => {
+    bnt.addEventListener("click", () => {
+      form?.classList.remove("hidden");
+      form?.classList.add("flex");
+    });
+  });
+
+  menuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.remove("hidden");
+    mobileMenu?.classList.add("block");
+    menuBtn?.classList.add("hidden");
+    menuBtn?.classList.remove("block");
+    closeBtn?.classList.remove("hidden");
+    closeBtn?.classList.remove("block");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.add("hidden");
+    mobileMenu?.classList.remove("block");
+    menuBtn?.classList.add("block");
+    menuBtn?.classList.remove("hidden");
+    closeBtn?.classList.remove("block");
+    closeBtn?.classList.add("hidden");
+  });
+</script>

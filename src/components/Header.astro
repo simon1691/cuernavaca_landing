@@ -1,0 +1,46 @@
+---
+import NavBar from "./NavBar.astro";
+import Button from "./Button.astro";
+import MainTitle from "./Logos/MainTitle.astro";
+---
+
+<header
+  id="header"
+  class="relative flex flex-col items-center justify-start md:justify-between w-full h-auto md:h-screen text-center bg-none md:bg-[url('/headerBg.png')] bg-contain bg-no-repeat bg-[position:0_96px] md:bg-cover md:bg-center pb-15"
+>
+  <!-- Top gradient overlay -->
+  <div
+    class="absolute top-0 left-0 w-full h-[250px] bg-gradient-to-b from-black via-black/60 via-70% to-transparent z-10 hidden md:block"
+  >
+  </div>
+
+  <NavBar />
+  <div class="relative md:hidden w-full top-[96px]">
+    <img
+      class="w-full h-auto object-left-top"
+      src="/headerMobile.png"
+      alt="Ritual Title"
+    />
+    <div
+      class="absolute bottom-0 left-0 w-full h-[100px] bg-gradient-to-t from-black via-black/90 via-40% to-transparent z-10"
+    >
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-20 px-10 md:px-6 text-white max-w-[950px]">
+    <div class="lg:w-[950px] md:w-[650px] mx-auto">
+      <MainTitle />
+    </div>
+    <p class="mb-10 mt-12 text-md md:text-xl font-sans">
+      El espíritu de México <br class="block md:hidden" /> en su forma más pura.
+    </p>
+    <Button buttonText="Quiero vivir la experiencia" />
+  </div>
+
+  <!-- Bottom gradient overlay -->
+  <div
+    class="hidden md:block absolute bottom-0 left-0 w-full h-[450px] bg-gradient-to-t from-black via-black/90 via-40% to-transparent z-10"
+  >
+  </div>
+</header>

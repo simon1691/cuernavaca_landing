@@ -1,0 +1,258 @@
+---
+let formError = "";
+let successMessage = "";
+---
+
+<style>
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #7c7c85;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #abaeb6;
+  }
+</style>
+
+<div
+  id="contactFormContainer"
+  class="fixed hidden flex-col px-5 md:px-10 pt-20 pb-8 right-0 top-0 bottom-0 max-w-md w-full bg-white shadow-md p-6 font-sans min-h-dvh overflow-y-auto"
+>
+  <button
+    id="close-form"
+    class="absolute right-8 top-8 w-[38px] h-[38px] flex items-center justify-center rounded-full border-2 border-black text-black hover:bg-white/10 transition cursor-pointer z-10"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 h-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <h2 class="text-4xl font-bold text-black mb-3">
+    Accede a experiencias exclusivas de Tequila Cuernavaca
+  </h2>
+  <p class="text-gray-700 mb-6 text-lg">
+    Déjanos tus datos y sé de los primeros en descubrir lanzamientos, catas
+    privadas y colaboraciones internacionales.
+  </p>
+
+  <!-- FORMULARIO -->
+  <form id="contactForm" class="flex flex-col gap-3">
+    <div>
+      <label for="name" class="text-sm font-medium text-gray-800"
+        >Nombre completo</label
+      >
+      <input
+        id="name"
+        name="name"
+        type="text"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        required
+      />
+      <p id="error-name" class="text-red-600 text-xs mt-1 hidden">
+        Ingrese un nombre válido.
+      </p>
+    </div>
+
+    <div>
+      <label for="email" class="text-sm font-medium text-gray-800"
+        >Correo electrónico</label
+      >
+      <input
+        id="email"
+        name="email"
+        type="email"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        required
+      />
+      <p id="error-email" class="text-red-600 text-xs mt-1 hidden">
+        Ingrese un correo válido.
+      </p>
+    </div>
+
+    <div>
+      <label for="whatsapp" class="text-sm font-medium text-gray-800"
+        >Número de WhatsApp</label
+      >
+      <input
+        id="whatsapp"
+        name="whatsapp"
+        type="tel"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        required
+      />
+      <p id="error-whatsapp" class="text-red-600 text-xs mt-1 hidden">
+        Ingrese un número válido.
+      </p>
+    </div>
+
+    <div>
+      <label for="message" class="text-sm font-medium text-gray-800"
+        >Mensaje o consulta</label
+      >
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+      ></textarea>
+      <p id="error-message" class="text-red-600 text-xs mt-1 hidden">
+        El mensaje debe tener al menos 10 caracteres.
+      </p>
+    </div>
+
+    <div class="flex items-center gap-2 mt-1">
+      <input
+        id="terms"
+        type="checkbox"
+        class="w-4 h-4 border-gray-300 rounded focus:ring-yellow-500"
+      />
+      <label for="terms" class="text-sm text-gray-700"
+        >Acepto términos y condiciones</label
+      >
+    </div>
+    <p id="error-terms" class="text-red-600 text-xs mt-1 hidden">
+      Debe aceptar los términos.
+    </p>
+
+    <button
+      type="submit"
+      class="w-full bg-yellow-400 hover:bg-yellow-500 text-black rounded-md py-3 mt-4 transition-colors"
+    >
+      Quiero vivir el ritual
+    </button>
+
+    <p
+      id="successMessage"
+      class="text-green-600 text-sm text-center hidden mt-3"
+    >
+      ¡Formulario enviado correctamente!
+    </p>
+  </form>
+</div>
+
+<script>
+  const formContainer = document.getElementById("contactFormContainer");
+  const closeFormButton = document.getElementById("close-form");
+
+  closeFormButton?.addEventListener("click", () => {
+    formContainer?.classList.remove("flex");
+    formContainer?.classList.add("hidden");
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("successMessage");
+
+    const fields = {
+      name: document.getElementById("name"),
+      email: document.getElementById("email"),
+      whatsapp: document.getElementById("whatsapp"),
+      message: document.getElementById("message"),
+      terms: document.getElementById("terms"),
+    };
+
+    const errors = {
+      name: document.getElementById("error-name"),
+      email: document.getElementById("error-email"),
+      whatsapp: document.getElementById("error-whatsapp"),
+      message: document.getElementById("error-message"),
+      terms: document.getElementById("error-terms"),
+    };
+
+    const showError = (key, text) => {
+      if (!errors[key]) return;
+      if (text) errors[key].textContent = text;
+      errors[key].classList.remove("hidden");
+      if (fields[key] && fields[key].setAttribute)
+        fields[key].setAttribute("aria-invalid", "true");
+    };
+
+    const hideError = (key) => {
+      if (!errors[key]) return;
+      errors[key].classList.add("hidden");
+      if (fields[key] && fields[key].removeAttribute)
+        fields[key].removeAttribute("aria-invalid");
+    };
+
+    // hide error on input
+    Object.keys(fields).forEach((k) => {
+      const el = fields[k];
+      if (!el) return;
+      el.addEventListener("input", () => hideError(k));
+      if (el.type === "checkbox") {
+        el.addEventListener("change", () => hideError("terms"));
+      }
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      // name
+      const nameVal = fields.name.value.trim();
+      if (nameVal.length < 3) {
+        showError("name", "Ingrese un nombre válido (mínimo 3 caracteres).");
+        valid = false;
+      } else hideError("name");
+
+      // email (correct regex)
+      const emailVal = fields.email.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        showError("email", "Ingrese un correo válido.");
+        valid = false;
+      } else hideError("email");
+
+      // whatsapp (digits only)
+      const phone = fields.whatsapp.value.replace(/\D/g, "");
+      if (!/^[0-9]{8,15}$/.test(phone)) {
+        showError("whatsapp", "Ingrese un número válido (8–15 dígitos).");
+        valid = false;
+      } else hideError("whatsapp");
+
+      // message optional but if present must be >=10 chars
+      const msg = fields.message.value.trim();
+      if (msg.length > 0 && msg.length < 10) {
+        showError("message", "El mensaje debe tener al menos 10 caracteres.");
+        valid = false;
+      } else hideError("message");
+
+      // terms
+      if (!fields.terms.checked) {
+        showError("terms", "Debe aceptar los términos.");
+        valid = false;
+      } else hideError("terms");
+
+      if (!valid) {
+        successMsg.classList.add("hidden");
+        return;
+      }
+
+      // success
+      successMsg.classList.remove("hidden");
+      // aquí podrías enviar los datos a tu API con fetch()
+      // ejemplo: fetch('/api/lead', { method:'POST', body: JSON.stringify({ name: nameVal, email: emailVal, phone, msg }) })
+
+      form.reset();
+      // ocultar success después de un rato
+      setTimeout(() => successMsg.classList.add("hidden"), 3500);
+    });
+  });
+</script>

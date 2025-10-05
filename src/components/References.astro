@@ -1,0 +1,225 @@
+---
+import ReferencesCard from "./ReferencesCard.astro";
+
+const referencesData = [
+  {
+    name: "Mariana López",
+    image: "/ref-2.png",
+    description:
+      "Lo probé en una reunión con amigos y todos quedamos impresionados. El sabor es elegante pero al mismo tiempo muy fácil de disfrutar. Ya se volvió mi tequila favorito.",
+    score: 5,
+  },
+  {
+    name: "Andrés Ramírez",
+    image: "/ref-1.png",
+    description:
+      "El diseño de la botella es increíble, parece una pieza de colección. El reposado tiene notas suaves que me encantan. Solo me costó un poco encontrarlo en mi ciudad.",
+    score: 5,
+  },
+  {
+    name: "Claudia Méndez",
+    image: "/ref-4.png",
+    description:
+      "Nunca había probado un cristalino tan fino. Se siente puro, con un aroma delicioso. Definitivamente lo llevaré a nuestra próxima cena familiar.",
+    score: 5,
+  },
+  {
+    name: "Jorge Herrera",
+    image: "/ref-3.png",
+    description:
+      "Lo descubrí en un bar de la zona hotelera y fue toda una sorpresa. El Extra Añejo es una joya, con un sabor profundo que me recordó a cacao y especias.",
+    score: 5,
+  },
+  {
+    name: "Sofía Torres",
+    image: "/ref-5.png",
+    description:
+      "Más que un tequila, es una experiencia completa. Desde que abres la botella hasta el primer trago se nota el cuidado en cada detalle. Ojalá tuviera más presentaciones pequeñas para regalar.",
+    score: 4,
+  },
+  {
+    name: "Luis Martínez",
+    image: "/ref-6.png",
+    description:
+      "Lo llevé a una cena con amigos en y todos quedaron fascinados. Me preguntaron dónde podían comprarlo. Es el mejor embajador de México.",
+    score: 5,
+  },
+];
+---
+
+<style>
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+</style>
+
+<section
+  id="experiencias"
+  class="flex justify-center w-full px-10 py-8 md:py-15 bg-black overflow-hidden scroll-mt-24 md:scroll-mt-2.5"
+>
+  <div class="flex flex-col gap-10 xl:max-w-[1400px] w-full">
+    <h1
+      class="mx-auto text-2xl md:text-5xl font-bold text-center text-[#EAEAFD] xl:max-w-[750px] font-sans"
+    >
+      Un tequila que no solo se bebe, se celebra.
+    </h1>
+
+    <div class="w-full overflow-hidden">
+      <div
+        id="carousel-references"
+        class="w-full mx-auto flex justify-start md:justify-center overflow-x-auto snap-x snap-mandatory gap-5
+         md:grid md:grid-cols-[repeat(auto-fit,minmax(300px,300px))] xl:grid-cols-[repeat(auto-fit,minmax(300px,440px))] md:grid-rows-[1fr]
+         md:overflow-visible scrollbar-hidden items-stretch"
+      >
+        {
+          referencesData.map((item, index) => (
+            <div
+              class="flex-shrink-0 snap-center w-full xl:w-auto h-auto flex items-stretch"
+              key={item.id}
+            >
+              <ReferencesCard
+                rating={item.score}
+                key={index + 1}
+                name={item.name}
+                description={item.description}
+                image={item.image}
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        id="carousel-indicators-references"
+        class="flex justify-center mt-6 gap-2 md:hidden"
+      >
+        {
+          referencesData.map((_, index) => (
+            <button
+              key={index}
+              class="w-2 h-2 rounded-full"
+              data-index={index}
+              aria-label={`Ir a ${index + 1}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const ACTIVE_COLOR = "bg-amber-300";
+    const INACTIVE_COLOR = "bg-gray-500";
+    const carousel = document.getElementById("carousel-references");
+    const indicators = Array.from(
+      document.querySelectorAll("#carousel-indicators-references button")
+    );
+    if (!carousel || indicators.length === 0) return;
+
+    const XL_BREAKPOINT_PX = 1280; // tailwind xl
+
+    function isMobile() {
+      return window.matchMedia(`(max-width: ${XL_BREAKPOINT_PX - 1}px)`)
+        .matches;
+    }
+
+    function setIndicatorActive(index) {
+      indicators.forEach((b, i) => {
+        b.classList.toggle(ACTIVE_COLOR, i === index);
+        b.classList.toggle(INACTIVE_COLOR, i !== index);
+      });
+    }
+
+    function setupCarousel() {
+      // always init indicator colors
+      setIndicatorActive(0);
+
+      if (!isMobile()) {
+        // no attach listeners on desktop
+        return;
+      }
+
+      const children = Array.from(carousel.children);
+      if (children.length === 0) return;
+
+      // click handlers -> use scrollIntoView center (fallback to offset)
+      indicators.forEach((btn, i) => {
+        btn.onclick = () => {
+          const target = children[i];
+          if (!target) return;
+
+          // try scrollIntoView (centers the item)
+          try {
+            target.scrollIntoView({
+              behavior: "smooth",
+              inline: "center",
+              block: "nearest",
+            });
+          } catch (err) {
+            // fallback robusto: usar offsetLeft
+            const left =
+              target.offsetLeft -
+              (carousel.clientWidth - target.clientWidth) / 2;
+            carousel.scrollTo({ left, behavior: "smooth" });
+          }
+
+          setIndicatorActive(i);
+        };
+      });
+
+      // scroll listener: actualiza indicador según slide centrado
+      const onScroll = () => {
+        const center = carousel.scrollLeft + carousel.clientWidth / 2;
+        let closest = 0;
+        let minDiff = Infinity;
+        children.forEach((child, idx) => {
+          const childCenter = child.offsetLeft + child.offsetWidth / 2;
+          const diff = Math.abs(childCenter - center);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closest = idx;
+          }
+        });
+        setIndicatorActive(closest);
+      };
+
+      carousel.addEventListener("scroll", onScroll, { passive: true });
+
+      // marcar indicador inicial
+      onScroll();
+
+      // retorno cleanup
+      return () => {
+        carousel.removeEventListener("scroll", onScroll);
+        indicators.forEach((btn) => (btn.onclick = null));
+      };
+    }
+
+    let cleanup = null;
+    function init() {
+      if (cleanup) cleanup();
+      cleanup = setupCarousel();
+    }
+
+    // init on load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+
+    // re-init on resize/orientation
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(init, 120);
+    });
+    window.addEventListener("orientationchange", () => setTimeout(init, 120));
+  })();
+</script>

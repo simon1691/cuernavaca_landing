@@ -1,0 +1,63 @@
+---
+import Logo from "./Logos/Logo.astro";
+---
+
+<div
+  id="welcomeModal"
+  class="fixed inset-0 bg-black/90 items-center justify-center hidden z-50"
+>
+  <div
+    class="flex flex-col items-center gap-4 bg-white rounded-[33px] py-[35px] px-[25px] max-w-[410px] text-center"
+  >
+    <Logo color={"black"} width={90} />
+    <h2 class="text-2xl font-bold">¿Tienes la edad para el ritual?</h2>
+    <div>
+      <p class="font-bold">Acceso reservado</p>
+      <p class="">
+        Este contenido es solo para mayores de edad. Confirma tu edad y entra al
+        universo de <br />Tequila Cuernavaca.
+      </p>
+    </div>
+    <button
+      id="closeModal"
+      class="flex justify-center items-center px-6 py-4 rounded-lg gap-2 bg-[#FFD015] min-w-[85%] hover:bg-[#e6b800] cursor-pointer"
+    >
+      Sí, soy mayor de edad
+    </button>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = "modalDismissed";
+  const EXPIRATION_HOURS = 24;
+
+  const modal = document.getElementById("welcomeModal");
+  const closeBtn = document.getElementById("closeModal");
+
+  function shouldShowModal() {
+    const dismissed = localStorage.getItem(STORAGE_KEY);
+    if (!dismissed) return true;
+    console.log(dismissed);
+    const dismissedTime = JSON.parse(dismissed);
+    console.log(dismissedTime);
+    const now = new Date().getTime();
+    console.log(now);
+    const hoursPassed = (now - dismissedTime) / (1000 * 60 * 60);
+    console.log(hoursPassed);
+
+    return hoursPassed > EXPIRATION_HOURS;
+  }
+
+  // Mostrar modal si corresponde
+  if (shouldShowModal()) {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  }
+
+  // Cerrar modal y guardar timestamp
+  closeBtn?.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(new Date().getTime()));
+  });
+</script>

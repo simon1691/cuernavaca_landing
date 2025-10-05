@@ -21,7 +21,7 @@ const collectionData = [
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_blanco.png",
+    imageUrl: "tequila_blanco.png",
     buttonText: "Reserva la experiencia",
   },
   {
@@ -41,7 +41,7 @@ const collectionData = [
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_blanco_rosado.png",
+    imageUrl: "tequila_blanco_rosado.png",
     buttonText: "Reserva la experiencia",
   },
   {
@@ -62,7 +62,7 @@ const collectionData = [
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_reposado.png",
+    imageUrl: "tequila_reposado.png",
     buttonText: "Reserva la experiencia",
   },
   {
@@ -82,7 +82,7 @@ const collectionData = [
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_anejo.png",
+    imageUrl: "tequila_anejo.png",
     buttonText: "Reserva la experiencia",
   },
   {
@@ -102,7 +102,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_anejo_cristalino.png",
+    imageUrl: "tequila_anejo_cristalino.png",
     buttonText: "Reserva la experiencia",
   },
   {
@@ -122,7 +122,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
       presentationTitle: "Presentación",
       presentation: "Botella",
     },
-    imageUrl: "/tequila_extra_anejo.png",
+    imageUrl: "tequila_extra_anejo.png",
     buttonText: "Reserva la experiencia",
   },
 ];
@@ -166,7 +166,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
               <ProductCard
                 title={item.title}
                 description={item.description}
-                image={item.imageUrl}
+                image={`./${item.imageUrl}`}
                 buttonText={item.buttonText}
                 productSpects={item.productSpects}
                 longdescription={item.longdescription}
@@ -190,6 +190,9 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
             />
           ))
         }
+      </div>
+      <div class="hidden md:flex justify-center mt-10">
+        <Button buttonText="Solicita más información" />
       </div>
     </div>
   </div>

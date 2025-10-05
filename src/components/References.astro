@@ -4,42 +4,42 @@ import ReferencesCard from "./ReferencesCard.astro";
 const referencesData = [
   {
     name: "Mariana López",
-    image: "/ref-2.png",
+    image: "ref-2.png",
     description:
       "Lo probé en una reunión con amigos y todos quedamos impresionados. El sabor es elegante pero al mismo tiempo muy fácil de disfrutar. Ya se volvió mi tequila favorito.",
     score: 5,
   },
   {
     name: "Andrés Ramírez",
-    image: "/ref-1.png",
+    image: "ref-1.png",
     description:
       "El diseño de la botella es increíble, parece una pieza de colección. El reposado tiene notas suaves que me encantan. Solo me costó un poco encontrarlo en mi ciudad.",
     score: 5,
   },
   {
     name: "Claudia Méndez",
-    image: "/ref-4.png",
+    image: "ref-4.png",
     description:
       "Nunca había probado un cristalino tan fino. Se siente puro, con un aroma delicioso. Definitivamente lo llevaré a nuestra próxima cena familiar.",
     score: 5,
   },
   {
     name: "Jorge Herrera",
-    image: "/ref-3.png",
+    image: "ref-3.png",
     description:
       "Lo descubrí en un bar de la zona hotelera y fue toda una sorpresa. El Extra Añejo es una joya, con un sabor profundo que me recordó a cacao y especias.",
     score: 5,
   },
   {
     name: "Sofía Torres",
-    image: "/ref-5.png",
+    image: "ref-5.png",
     description:
       "Más que un tequila, es una experiencia completa. Desde que abres la botella hasta el primer trago se nota el cuidado en cada detalle. Ojalá tuviera más presentaciones pequeñas para regalar.",
     score: 4,
   },
   {
     name: "Luis Martínez",
-    image: "/ref-6.png",
+    image: "ref-6.png",
     description:
       "Lo llevé a una cena con amigos en y todos quedaron fascinados. Me preguntaron dónde podían comprarlo. Es el mejor embajador de México.",
     score: 5,
@@ -86,7 +86,7 @@ const referencesData = [
                 key={index + 1}
                 name={item.name}
                 description={item.description}
-                image={item.image}
+                image={`./${item.image}`}
               />
             </div>
           ))

@@ -1,12 +1,11 @@
 ---
-import NavBar from "./NavBar.astro";
 import Button from "./Button.astro";
 import MainTitle from "./Logos/MainTitle.astro";
 ---
 
 <header
   id="header"
-  class="relative flex flex-col items-center justify-start md:justify-between w-full h-auto md:h-screen text-center bg-none md:bg-[url('/headerBg.png')] bg-contain bg-no-repeat bg-[position:0_96px] md:bg-cover md:bg-center pb-15"
+  class="relative flex flex-col items-center justify-start md:justify-end w-full h-auto md:h-screen text-center bg-none md:bg-[url('/headerBg.png')] bg-contain bg-no-repeat bg-[position:0_96px] md:bg-cover md:bg-center pb-15"
 >
   <!-- Top gradient overlay -->
   <div
@@ -14,7 +13,6 @@ import MainTitle from "./Logos/MainTitle.astro";
   >
   </div>
 
-  <NavBar />
   <div class="relative md:hidden w-full top-[96px]">
     <img
       class="w-full h-auto object-left-top"

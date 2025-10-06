@@ -62,17 +62,16 @@ const { title, description, image, productSpects } = Astro.props;
       </svg>
     </button>
 
-    <div class="absolute top-8 left-8">
-      <Logo />
-    </div>
-
     <!-- Wrapper que scrollea -->
     <div class="w-full h-full overflow-y-auto rounded-3xl">
       <div class="flex flex-col md:flex-row h-full">
         <!-- Imagen -->
         <div
-          class="w-full h-[450px] md:h-auto md:w-[45%] pt-10 pb-5 md:py-10 bg-black"
+          class="w-full h-[450px] md:h-auto md:w-[45%] pt-10 pb-5 md:py-10 bg-black relative"
         >
+          <div class="absolute top-8 left-8">
+            <Logo />
+          </div>
           <img
             id="productImage"
             class="h-full w-auto md:w-auto md:h-full mx-auto md:mx-0 object-cover object-[center_-20px]"

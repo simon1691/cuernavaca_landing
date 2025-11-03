@@ -1,12 +1,17 @@
 ---
 import Logo from "./Logos/Logo.astro";
-const links = [
-  { name: "Inicio", href: "#header" },
-  { name: "Historia", href: "#historia" },
-  { name: "Colección", href: "#coleccion" },
-  { name: "Ritual", href: "#ritual" },
-  { name: "Experiencias", href: "#experiencias" },
-];
+// const links = [
+//   { name: "Inicio", href: "#header" },
+//   { name: "Historia", href: "#historia" },
+//   { name: "Colección", href: "#coleccion" },
+//   { name: "Ritual", href: "#ritual" },
+//   { name: "Experiencias", href: "#experiencias" },
+// ];
+
+const { content, lang } = Astro.props;
+const otherLang = lang === "es" ? "en" : "es";
+
+console.log(content);
 ---
 
 <nav class="w-full z-30 fixed">
@@ -18,7 +23,7 @@ const links = [
       <!-- Desktop Links -->
       <ul class="hidden md:flex items-center space-x-8 text-white">
         {
-          links.map((link) => (
+          content.links.map((link) => (
             <li>
               <a href={link.href} class="hover:text-gray-300 transition">
                 {link.name}
@@ -30,8 +35,16 @@ const links = [
           <button
             class="contact-button bg-white text-black px-5 py-1.5 rounded-lg font-medium hover:bg-gray-200 transition"
           >
-            Contacto
+            {content.contact}
           </button>
+        </li>
+        <li>
+          <a
+            href={`/${otherLang}/`}
+            class="uppercase border border-white px-3 py-1 rounded"
+          >
+            {otherLang}
+          </a>
         </li>
       </ul>
     </div>
@@ -83,7 +96,7 @@ const links = [
     >
       <ul class="flex flex-col items-start gap-6 text-lg">
         {
-          links.map((link) => (
+          content.links.map((link) => (
             <li>
               <a
                 href={link.href}
@@ -95,13 +108,21 @@ const links = [
             </li>
           ))
         }
+        <li>
+          <a
+            href={`/${otherLang}/`}
+            class="uppercase border border-white px-3 py-1 rounded"
+          >
+            {otherLang}
+          </a>
+        </li>
       </ul>
 
       <div class="mt-10 px-5">
         <button
           class="w-full contact-button block bg-white text-black px-5 py-3 rounded-lg font-medium text-center hover:bg-gray-200 transition"
         >
-          Contacto
+          {content.contact}
         </button>
       </div>
     </div>

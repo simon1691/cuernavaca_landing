@@ -1,6 +1,8 @@
 ---
 import RitualTitle from "./Logos/RitualTitle.astro";
 import RitualTitleMobile from "./Logos/RitualTitleMobile.astro";
+
+const { content } = Astro.props;
 ---
 
 <section
@@ -18,10 +20,10 @@ import RitualTitleMobile from "./Logos/RitualTitleMobile.astro";
       class="w-full xl:w-[550px] text-white flex flex-col items-center justify-between h-full md:h-auto"
     >
       <div class="hidden md:block">
-        <RitualTitle />
+        <RitualTitle lenguage={content.language} />
       </div>
       <div class="block md:hidden">
-        <RitualTitleMobile />
+        <RitualTitleMobile lenguage={content.language} />
       </div>
       <div
         class="bg-[url('/ritualMobile.png')] w-full bg-cover bg-[position:40%_40%] relative h-[275px] py-15 px-15 md:hidden mt-8"
@@ -36,18 +38,9 @@ import RitualTitleMobile from "./Logos/RitualTitleMobile.astro";
         </div>
       </div>
       <p
+        set:html={content.paragraph}
         class="text-md md:text-2xl font-sans text-left md:text-center mt-12 px-10 md:px-0 md:mt-8"
-      >
-        Certificados en Buenas Prácticas Manufactureras, Destilado 100% Agave
-        Azul,<br class="hidden md:block" /> denominación de origen protegida.<br
-          class="hidden md:block"
-        />
-        <strong
-          >Cada botella de Cuernavaca es un legado de<br
-            class="hidden md:block"
-          /> calidad y autenticidad.</strong
-        >
-      </p>
+      />
     </div>
   </div>
   <div

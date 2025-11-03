@@ -1,6 +1,8 @@
 ---
 let formError = "";
 let successMessage = "";
+
+const { content } = Astro.props;
 ---
 
 <style>
@@ -46,18 +48,17 @@ let successMessage = "";
   </button>
 
   <h2 class="text-4xl font-bold text-black mb-3">
-    Accede a experiencias exclusivas de Tequila Cuernavaca
+    {content.title}
   </h2>
   <p class="text-gray-700 mb-6 text-lg">
-    Déjanos tus datos y sé de los primeros en descubrir lanzamientos, catas
-    privadas y colaboraciones internacionales.
+    {content.paragraph}
   </p>
 
   <!-- FORMULARIO -->
   <form id="contactForm" class="flex flex-col gap-3">
     <div>
       <label for="name" class="text-sm font-medium text-gray-800"
-        >Nombre completo</label
+        >{content.label.name}</label
       >
       <input
         id="name"
@@ -67,13 +68,13 @@ let successMessage = "";
         required
       />
       <p id="error-name" class="text-red-600 text-xs mt-1 hidden">
-        Ingrese un nombre válido.
+        {content.errors.name}
       </p>
     </div>
 
     <div>
       <label for="email" class="text-sm font-medium text-gray-800"
-        >Correo electrónico</label
+        >{content.label.email}</label
       >
       <input
         id="email"
@@ -83,13 +84,13 @@ let successMessage = "";
         required
       />
       <p id="error-email" class="text-red-600 text-xs mt-1 hidden">
-        Ingrese un correo válido.
+        {content.errors.email}
       </p>
     </div>
 
     <div>
       <label for="whatsapp" class="text-sm font-medium text-gray-800"
-        >Número de WhatsApp</label
+        >{content.label.whatsapp}</label
       >
       <input
         id="whatsapp"
@@ -99,13 +100,13 @@ let successMessage = "";
         required
       />
       <p id="error-whatsapp" class="text-red-600 text-xs mt-1 hidden">
-        Ingrese un número válido.
+        {content.errors.whatsapp}
       </p>
     </div>
 
     <div>
       <label for="message" class="text-sm font-medium text-gray-800"
-        >Mensaje o consulta</label
+        >{content.label.message}</label
       >
       <textarea
         id="message"
@@ -114,7 +115,7 @@ let successMessage = "";
         class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
       ></textarea>
       <p id="error-message" class="text-red-600 text-xs mt-1 hidden">
-        El mensaje debe tener al menos 10 caracteres.
+        {content.errors.message}
       </p>
     </div>
 
@@ -125,30 +126,33 @@ let successMessage = "";
         class="w-4 h-4 border-gray-300 rounded focus:ring-yellow-500"
       />
       <label for="terms" class="text-sm text-gray-700"
-        >Acepto términos y condiciones</label
+        >{content.termsAndConditions}</label
       >
     </div>
     <p id="error-terms" class="text-red-600 text-xs mt-1 hidden">
-      Debe aceptar los términos.
+      {content.errors.termsAndConditions}
     </p>
 
     <button
       type="submit"
       class="w-full bg-yellow-400 hover:bg-yellow-500 text-black rounded-md py-3 mt-4 transition-colors"
     >
-      Quiero vivir el ritual
+      {content.submitButtonText}
     </button>
 
     <p
       id="successMessage"
       class="text-green-600 text-sm text-center hidden mt-3"
     >
-      ¡Formulario enviado correctamente!
+      {content.successMessage}
     </p>
   </form>
 </div>
 
 <script>
+  const path = window.location.pathname; // ejemplo: "/es/"
+  const lang = path.split("/")[1]; // obtiene "es" o "en"
+
   const formContainer = document.getElementById("contactFormContainer");
   const closeFormButton = document.getElementById("close-form");
 
@@ -208,7 +212,12 @@ let successMessage = "";
       // name
       const nameVal = fields.name.value.trim();
       if (nameVal.length < 3) {
-        showError("name", "Ingrese un nombre válido (mínimo 3 caracteres).");
+        showError(
+          "name",
+          lang === "es"
+            ? "Ingrese un nombre válido (mínimo 3 caracteres)."
+            : "Please enter a valid name. (min 3 characters)"
+        );
         valid = false;
       } else hideError("name");
 
@@ -216,27 +225,47 @@ let successMessage = "";
       const emailVal = fields.email.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailVal)) {
-        showError("email", "Ingrese un correo válido.");
+        showError(
+          "email",
+          lang === "es"
+            ? "Ingrese un correo válido."
+            : "Please enter a valid email."
+        );
         valid = false;
       } else hideError("email");
 
       // whatsapp (digits only)
       const phone = fields.whatsapp.value.replace(/\D/g, "");
       if (!/^[0-9]{8,15}$/.test(phone)) {
-        showError("whatsapp", "Ingrese un número válido (8–15 dígitos).");
+        showError(
+          "whatsapp",
+          lang === "es"
+            ? "Ingrese un número válido (8–15 dígitos)."
+            : "Please enter a valid phone number.(8-15 digits)"
+        );
         valid = false;
       } else hideError("whatsapp");
 
       // message optional but if present must be >=10 chars
       const msg = fields.message.value.trim();
       if (msg.length > 0 && msg.length < 10) {
-        showError("message", "El mensaje debe tener al menos 10 caracteres.");
+        showError(
+          "message",
+          lang === "es"
+            ? "El mensaje debe tener al menos 10 caracteres."
+            : "The message must be at least 10 characters long."
+        );
         valid = false;
       } else hideError("message");
 
       // terms
       if (!fields.terms.checked) {
-        showError("terms", "Debe aceptar los términos.");
+        showError(
+          "terms",
+          lang === "es"
+            ? "Debe aceptar los términos y condiciones."
+            : "You must accept the terms and conditions."
+        );
         valid = false;
       } else hideError("terms");
 

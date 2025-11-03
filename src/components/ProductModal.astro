@@ -1,6 +1,6 @@
 ---
 import Logo from "./Logos/Logo.astro";
-const { title, description, image, productSpects } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <style>
@@ -112,7 +112,7 @@ const { title, description, image, productSpects } = Astro.props;
             href="https://www.google.com/"
             target="_blank"
           >
-            <span class="text-black">Dónde comprar</span>
+            <span class="text-black">{content.buttonWhereToBuy}</span>
           </a>
         </div>
       </div>

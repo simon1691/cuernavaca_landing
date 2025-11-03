@@ -2,130 +2,7 @@
 import ProductCard from "./ProductCard.astro";
 import Button from "./Button.astro";
 
-const collectionData = [
-  {
-    id: "tequila_blanco",
-    title: "TEQUILA BLANCO CUERNAVACA",
-    description:
-      "Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.",
-    longdescription: `Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.
-      Entre sus notas principales destacan: Agave, cítricos, melón, manzana y menta.
-      Con sabor ligeramente dulce y mineral, con una permanencia en boca de notas cítricas y sensación herbal fresca.`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Blanco 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_blanco.png",
-    buttonText: "Reserva la experiencia",
-  },
-  {
-    id: "tequila_blanco_rosado",
-    title: "TEQUILA BLANCO CUERNAVACA ROSADO",
-    description:
-      "Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales.",
-    longdescription: `Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales. Entre sus notas principales destacan: Agave, cítricos, melón, manzana y menta.
-    Con sabor ligeramente dulce y mineral, con una permanencia en boca de notas cítricas y sensación herbal fresca.`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Blanco Rosado 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_blanco_rosado.png",
-    buttonText: "Reserva la experiencia",
-  },
-  {
-    id: "tequila_reposado",
-    title: "TEQUILA REPOSADO CUERNAVACA",
-    description:
-      "Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.",
-    longdescription: `Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.
-    Aromas principales a naranja, plátano, nuez y madera ahumada.
-    Con sabor a agave cocido, vainilla y cacahuate tostado`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Reposado 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_reposado.png",
-    buttonText: "Reserva la experiencia",
-  },
-  {
-    id: "tequila_anejo",
-    title: "TEQUILA AÑEJO CUERNAVACA",
-    description:
-      "Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
-    longdescription: `Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.
-    Sabores a canela, caramelo y frutos rojos con un remanente especiado principalmente pimienta.`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Añejo 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_anejo.png",
-    buttonText: "Reserva la experiencia",
-  },
-  {
-    id: "tequila_anejo_cristalino",
-    title: "TEQUILA AÑEJO CRISTALINO CUERNAVACA",
-    description:
-      "Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
-    longdescription: `Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla. 
-Sabores a canela, caramelo y frutos rojos con un remanente especiado principalmente pimienta.`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Añejo Cristalino 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_anejo_cristalino.png",
-    buttonText: "Reserva la experiencia",
-  },
-  {
-    id: "tequila_extra_anejo",
-    title: "TEQUILA EXTRA AÑEJO CUERNAVACA",
-    description:
-      "Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana.",
-    longdescription: `Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana. 
-    En su sabor destaca fuerte carácter de azúcar quemada, humo, y vainilla, quedando en boca sensación de tabaco, frutos secos y un suave final de cacao.`,
-    productSpects: {
-      productTitle: "Producto",
-      product: "Tequila Extra Añejo 100% Agave azul",
-      volumeTitle: "Capacidad",
-      volumen: "700 ml",
-      alcoholTitle: "Alcohol",
-      alcohol: "36% Alc. Vol.",
-      presentationTitle: "Presentación",
-      presentation: "Botella",
-    },
-    imageUrl: "tequila_extra_anejo.png",
-    buttonText: "Reserva la experiencia",
-  },
-];
+const { content } = Astro.props;
 ---
 
 <style>
@@ -146,7 +23,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
     <h1
       class="mx-auto text-2xl md:text-5xl font-bold text-center text-[#EAEAFD] xl:max-w-[1130px] font-sans"
     >
-      Nuestra colección
+      {content.title}
     </h1>
 
     <div class="w-full overflow-hidden">
@@ -158,7 +35,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
           scrollbar-hidden items-stretch"
       >
         {
-          collectionData.map((item) => (
+          content.data.map((item) => (
             <div
               class="flex-shrink-0 snap-center w-full xl:w-auto h-auto flex items-stretch"
               key={item.id}
@@ -181,7 +58,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
         class="flex justify-center mt-6 gap-2 md:hidden"
       >
         {
-          collectionData.map((_, index) => (
+          content.data.map((_, index) => (
             <button
               key={index}
               class="w-2 h-2 rounded-full"
@@ -192,7 +69,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
         }
       </div>
       <div class="hidden md:flex justify-center mt-10">
-        <Button buttonText="Solicita más información" />
+        <Button buttonText={content.buttonRequestInfo} />
       </div>
     </div>
   </div>

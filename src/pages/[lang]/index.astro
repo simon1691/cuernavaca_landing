@@ -1,0 +1,57 @@
+---
+import "../../styles/global.css";
+import Header from "../../components/Header.astro";
+import Historia from "../../components/Historia.astro";
+import Coleccion from "../../components/Coleccion.astro";
+import WhatsappIButton from "../../components/WhatsappIButton.astro";
+import Ritual from "../../components/Ritual.astro";
+import References from "../../components/References.astro";
+import ContactUs from "../../components/ContactUs.astro";
+import Footer from "../../components/Footer.astro";
+import ProductModal from "../../components/ProductModal.astro";
+import LegalModal from "../../components/LegalModal.astro";
+import Form from "../../components/Form.astro";
+import NavBar from "../../components/NavBar.astro";
+
+import { languages, defaultLang } from "../../i18n/index";
+
+// 🔹 Generamos las rutas estáticas para cada idioma
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params;
+const texts = languages[lang] || languages[defaultLang];
+---
+
+<html lang={lang}>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>CUERNAVACA</title>
+  </head>
+  <body class="min-h-screen bg-black font-sans">
+    <div id="productModal" class="hidden">
+      Contáctanos
+      <ProductModal content={texts.collection} />
+    </div>
+    <LegalModal content={texts.legal} />
+    <div class="absolute top-0 left-0 w-full z-50">
+      <Form content={texts.form} />
+    </div>
+
+    <WhatsappIButton />
+    <NavBar lang={lang} content={texts.nav} />
+    <Header content={texts.header} />
+    <main class="">
+      <Historia content={texts.history} />
+      <Coleccion content={texts.collection} />
+      <Ritual content={texts.ritual} />
+      <References content={texts.references} />
+      <ContactUs lang={lang} content={texts.contactUs} />
+    </main>
+    <Footer content={texts.footer} />
+  </body>
+</html>

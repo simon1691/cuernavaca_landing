@@ -6,12 +6,11 @@ import X from "./Iconos/X.astro";
 import LN from "./Iconos/LN.astro";
 import YT from "./Iconos/YT.astro";
 
-const navItems = [
-  { name: "Historia", href: "#historia" },
-  { name: "Colección", href: "#coleccion" },
-  { name: "Ritual", href: "#ritual" },
-  { name: "Experiences", href: "#experiencias" },
-];
+const { content } = Astro.props;
+
+const navItems = content.links.filter(
+  (item) => item.name !== "Home" && item.name !== "Inicio"
+);
 ---
 
 <footer class="bg-[#18181B] py-15 md:py-8 px-10">
@@ -45,14 +44,15 @@ const navItems = [
   <div
     class="border-t border-[#3A3A3C] flex flex-col md:flex-row md:justify-between md:items-center text-[#EAEAFD] pt-8 gap-5 md:gap-0"
   >
-    <p class="text-sm md:text-md md:text-left text-center">
-      © 2025 Tequila Cuernavaca. <br class="md:hidden block" />Todos los
-      derechos reservados.
-    </p>
+    <p
+      set:html={content.copyRight}
+      class="text-sm md:text-md md:text-left text-center"
+    />
     <p class="text-sm md:text-md md:text-right text-left">
-      Política de privacidad<br class="md:hidden block" /><br
+      {content.policy}<br class="md:hidden block" /><br
         class="md:hidden block"
-      /> Términos y condiciones
+      />
+      {content.terms}
     </p>
   </div>
 </footer>

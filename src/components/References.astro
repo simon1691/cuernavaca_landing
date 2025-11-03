@@ -1,50 +1,6 @@
 ---
 import ReferencesCard from "./ReferencesCard.astro";
-
-const referencesData = [
-  {
-    name: "Mariana López",
-    image: "ref-2.png",
-    description:
-      "Lo probé en una reunión con amigos y todos quedamos impresionados. El sabor es elegante pero al mismo tiempo muy fácil de disfrutar. Ya se volvió mi tequila favorito.",
-    score: 5,
-  },
-  {
-    name: "Andrés Ramírez",
-    image: "ref-1.png",
-    description:
-      "El diseño de la botella es increíble, parece una pieza de colección. El reposado tiene notas suaves que me encantan. Solo me costó un poco encontrarlo en mi ciudad.",
-    score: 5,
-  },
-  {
-    name: "Claudia Méndez",
-    image: "ref-4.png",
-    description:
-      "Nunca había probado un cristalino tan fino. Se siente puro, con un aroma delicioso. Definitivamente lo llevaré a nuestra próxima cena familiar.",
-    score: 5,
-  },
-  {
-    name: "Jorge Herrera",
-    image: "ref-3.png",
-    description:
-      "Lo descubrí en un bar de la zona hotelera y fue toda una sorpresa. El Extra Añejo es una joya, con un sabor profundo que me recordó a cacao y especias.",
-    score: 5,
-  },
-  {
-    name: "Sofía Torres",
-    image: "ref-6.png",
-    description:
-      "Más que un tequila, es una experiencia completa. Desde que abres la botella hasta el primer trago se nota el cuidado en cada detalle. Ojalá tuviera más presentaciones pequeñas para regalar.",
-    score: 4,
-  },
-  {
-    name: "Luis Martínez",
-    image: "ref-5.png",
-    description:
-      "Lo llevé a una cena con amigos en y todos quedaron fascinados. Me preguntaron dónde podían comprarlo. Es el mejor embajador de México.",
-    score: 5,
-  },
-];
+const { content } = Astro.props;
 ---
 
 <style>
@@ -65,7 +21,7 @@ const referencesData = [
     <h1
       class="mx-auto text-2xl md:text-5xl font-bold text-center text-[#EAEAFD] xl:max-w-[750px] font-sans"
     >
-      Un tequila que no solo se bebe, se celebra.
+      {content.title}
     </h1>
 
     <div class="w-full overflow-hidden">
@@ -76,7 +32,7 @@ const referencesData = [
          md:overflow-visible scrollbar-hidden items-stretch"
       >
         {
-          referencesData.map((item, index) => (
+          content.data.map((item, index) => (
             <div
               class="flex-shrink-0 snap-center w-full xl:w-auto h-auto flex items-stretch"
               key={item.id}
@@ -98,7 +54,7 @@ const referencesData = [
         class="flex justify-center mt-6 gap-2 md:hidden"
       >
         {
-          referencesData.map((_, index) => (
+          content.data.map((_, index) => (
             <button
               key={index}
               class="w-2 h-2 rounded-full"

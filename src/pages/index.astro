@@ -1,44 +1,16 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
-import Historia from "../components/Historia.astro";
-import Coleccion from "../components/Coleccion.astro";
-import WhatsappIButton from "../components/WhatsappIButton.astro";
-import Ritual from "../components/Ritual.astro";
-import References from "../components/References.astro";
-import ContactUs from "../components/ContactUs.astro";
-import Footer from "../components/Footer.astro";
-import ProductModal from "../components/ProductModal.astro";
-import LegalModal from "../components/LegalModal.astro";
-import Form from "../components/Form.astro";
-import NavBar from "../components/NavBar.astro";
+import { defaultLang } from "../i18n";
+
+// 🚀 En desarrollo: carga español directamente
+if (import.meta.env.DEV) {
+  Astro.redirect("/es/");
+} else {
+  // 🌍 En producción: detecta idioma automáticamente
+  const browserLang = Astro.request.headers.get("accept-language")?.slice(0, 2);
+  const lang = ["en", "es"].includes(browserLang) ? browserLang : defaultLang;
+
+  // Usa la base configurada (por ejemplo /cuernavaca_landing/)
+  const base = import.meta.env.BASE_URL || "/";
+  Astro.redirect(`${base}${lang}/`);
+}
 ---
-
-<html lang="es">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <title>CUERNAVACA</title>
-  </head>
-  <body class="min-h-screen bg-black font-sans">
-    <div id="productModal" class="hidden">
-      <ProductModal />
-    </div>
-    <LegalModal />
-    <div class="absolute top-0 left-0 w-full z-50">
-      <Form />
-    </div>
-
-    <WhatsappIButton />
-    <NavBar />
-    <Header />
-    <main class="">
-      <Historia />
-      <Coleccion />
-      <Ritual />
-      <References />
-      <ContactUs />
-    </main>
-    <Footer />
-  </body>
-</html>

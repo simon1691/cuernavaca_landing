@@ -2,7 +2,7 @@
 const links= [
     { name: "Home", href: "#header" },
     { name: "History", href: "#historia" },
-    { name: "Colletion", href: "#coleccion" },
+    { name: "Collection", href: "#coleccion" },
     { name: "The Ritual", href: "#ritual" },
     { name: "Experiences", href: "#experiencias" },
 ]
@@ -18,7 +18,7 @@ header: {
 },
 
 history: {
-    title: "We’re not just Tequila... We are the spirit of Mexico turned into a ritual!",
+    title: `We’re not just Tequila... <br><br>We are the spirit of Mexico turned into a ritual!`,
     paragraph: "In the sacred lands of Cuernavaca, where agave fields whisper to the wind, a unique elixir is born from carefully selected blue agaves. Every drop captures the strength of the volcanoes, the patience of agave, and the legacy of our ancestors."
 },
 collection: {

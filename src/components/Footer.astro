@@ -48,11 +48,13 @@ const navItems = content.links.filter(
       set:html={content.copyRight}
       class="text-sm md:text-md md:text-left text-center"
     />
-    <p class="text-sm md:text-md md:text-right text-left">
-      {content.policy}<br class="md:hidden block" /><br
-        class="md:hidden block"
-      />
-      {content.terms}
-    </p>
+    <div class="md:flex md:justify-end gap-4 flex flex-col">
+      <p class="text-sm md:text-md md:text-right text-left">
+        {content.terms}
+      </p>
+      <p class="text-sm md:text-md md:text-right text-left">
+        {content.policy}
+      </p>
+    </div>
   </div>
 </footer>

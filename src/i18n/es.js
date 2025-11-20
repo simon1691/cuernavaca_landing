@@ -17,7 +17,9 @@ header: {
     button: "Quiero vivir la experiencia"
 },
 history: {
-    title: "No somos sólo Tequila... ¡Somos el espíritu de México convertido en ritual!",
+    title: `No somos sólo Tequila... <br><br>
+    
+    ¡Somos el espíritu de México convertido en ritual!`,
     paragraph: "En las tierras sagradas de Cuernavaca, donde los guardianes del agave susurraban al viento, nació un elixir reservado para los elegidos. Cada gota guarda la fuerza de los volcanes, la paciencia del agave y el eco de los ancestros."
 },
 collection: {

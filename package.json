@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^5.2.8",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.13.10",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"

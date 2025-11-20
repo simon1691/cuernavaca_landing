@@ -17,8 +17,8 @@ header: {
     button: "Quiero vivir la experiencia"
 },
 history: {
-    title: "No somos solo tequila. Somos el espíritu de México convertido en ritual.",
-    paragraph: "En las tierras sagxradas de Cuernavaca, donde los guardianes del agave susurraban al viento, nació un elixir reservado para los elegidos. Cada gota guarda la fuerza de los volcanes, la paciencia del agave y el eco de los ancestros."
+    title: "No somos sólo Tequila... ¡Somos el espíritu de México convertido en ritual!",
+    paragraph: "En las tierras sagradas de Cuernavaca, donde los guardianes del agave susurraban al viento, nació un elixir reservado para los elegidos. Cada gota guarda la fuerza de los volcanes, la paciencia del agave y el eco de los ancestros."
 },
 collection: {
     title: "Nuestra colección",
@@ -27,7 +27,7 @@ collection: {
     data: [
   {
     id: "tequila_blanco",
-    title: "TEQUILA BLANCO CUERNAVACA",
+    title: "BLANCO",
     description:
       "Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.",
     longdescription: `Tequila 100% agave Blanco, a la vista cristalino y limpio, se caracteriza por sus aromas herbales y frutales.
@@ -48,7 +48,7 @@ collection: {
   },
   {
     id: "tequila_blanco_rosado",
-    title: "TEQUILA BLANCO CUERNAVACA ROSADO",
+    title: "BLANCO ROSADO",
     description:
       "Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales.",
     longdescription: `Tequila 100% agave Blanco, a la vista rosado y suave. Se caracteriza por sus aromas herbales y frutales. Entre sus notas principales destacan: Agave, cítricos, melón, manzana y menta.
@@ -68,7 +68,7 @@ collection: {
   },
   {
     id: "tequila_reposado",
-    title: "TEQUILA REPOSADO CUERNAVACA",
+    title: "REPOSADO",
     description:
       "Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.",
     longdescription: `Tequila 100% agave Reposado, visualmente agradable con tono pajizo brillante, contiene notas suaves de la maduración.
@@ -89,7 +89,7 @@ collection: {
   },
   {
     id: "tequila_anejo",
-    title: "TEQUILA AÑEJO CUERNAVACA",
+    title: "AÑEJO",
     description:
       "Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
     longdescription: `Tequila 100% agave Añejo, presenta un color ámbar dorado, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.
@@ -109,7 +109,7 @@ collection: {
   },
   {
     id: "tequila_anejo_cristalino",
-    title: "TEQUILA AÑEJO CRISTALINO CUERNAVACA",
+    title: "AÑEJO CRISTALINO",
     description:
       "Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla.",
     longdescription: `Tequila 100% agave Añejo, presenta un color totalmente cristalino a la vista, aromas florales dulces y de añejamiento muy presente de roble, uva, almendra y vainilla. 
@@ -129,7 +129,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
   },
   {
     id: "tequila_extra_anejo",
-    title: "TEQUILA EXTRA AÑEJO CUERNAVACA",
+    title: "EXTRA AÑEJO",
     description:
       "Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana.",
     longdescription: `Tequila 100% agave Extra Añejo, color rojizo intenso, con fuertes notas aromáticas de una profunda maduración, principalmente roble tostado, ciruela pasa, sándalo y avellana. 

@@ -1,7 +1,6 @@
 ---
 let formError = "";
 let successMessage = "";
-
 const { content } = Astro.props;
 ---
 
@@ -9,16 +8,13 @@ const { content } = Astro.props;
   ::-webkit-scrollbar {
     width: 8px;
   }
-
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-
   ::-webkit-scrollbar-thumb {
     background: #7c7c85;
     border-radius: 9999px;
   }
-
   ::-webkit-scrollbar-thumb:hover {
     background: #abaeb6;
   }
@@ -47,15 +43,25 @@ const { content } = Astro.props;
     </svg>
   </button>
 
-  <h2 class="text-4xl font-bold text-black mb-3">
-    {content.title}
-  </h2>
-  <p class="text-gray-700 mb-6 text-lg">
-    {content.paragraph}
-  </p>
+  <h2 class="text-4xl font-bold text-black mb-3">{content.title}</h2>
+  <p class="text-gray-700 mb-6 text-lg">{content.paragraph}</p>
 
   <!-- FORMULARIO -->
-  <form id="contactForm" class="flex flex-col gap-3">
+  <form
+    id="contactForm"
+    class="flex flex-col gap-3"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+  >
+    <input type="hidden" name="from_name" value="Tequila Cuernavaca" />
+    <input type="hidden" name="subject" value="Nuevo mensaje del formulario" />
+    <input
+      type="hidden"
+      name="access_key"
+      value="c1f0beec-f25a-42ad-9986-d64f5839459a"
+    />
+
+    <input type="hidden" name="redirect" value="" />
     <div>
       <label for="name" class="text-sm font-medium text-gray-800"
         >{content.label.name}</label
@@ -96,6 +102,9 @@ const { content } = Astro.props;
         id="whatsapp"
         name="whatsapp"
         type="tel"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="15"
         class="w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         required
       />
@@ -150,8 +159,8 @@ const { content } = Astro.props;
 </div>
 
 <script>
-  const path = window.location.pathname; // ejemplo: "/es/"
-  const lang = path.split("/")[1]; // obtiene "es" o "en"
+  const path = window.location.pathname;
+  const lang = path.split("/")[1];
 
   const formContainer = document.getElementById("contactFormContainer");
   const closeFormButton = document.getElementById("close-form");
@@ -160,6 +169,7 @@ const { content } = Astro.props;
     formContainer?.classList.remove("flex");
     formContainer?.classList.add("hidden");
   });
+
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
     const successMsg = document.getElementById("successMessage");
@@ -180,89 +190,87 @@ const { content } = Astro.props;
       terms: document.getElementById("error-terms"),
     };
 
+    // 🔢 Allow only numeric input for WhatsApp
+    fields.whatsapp.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/\D/g, ""); // remove non-digits
+    });
+
     const showError = (key, text) => {
       if (!errors[key]) return;
       if (text) errors[key].textContent = text;
       errors[key].classList.remove("hidden");
-      if (fields[key] && fields[key].setAttribute)
+      if (fields[key]?.setAttribute)
         fields[key].setAttribute("aria-invalid", "true");
     };
 
     const hideError = (key) => {
       if (!errors[key]) return;
       errors[key].classList.add("hidden");
-      if (fields[key] && fields[key].removeAttribute)
+      if (fields[key]?.removeAttribute)
         fields[key].removeAttribute("aria-invalid");
     };
 
-    // hide error on input
     Object.keys(fields).forEach((k) => {
       const el = fields[k];
       if (!el) return;
       el.addEventListener("input", () => hideError(k));
-      if (el.type === "checkbox") {
+      if (el.type === "checkbox")
         el.addEventListener("change", () => hideError("terms"));
-      }
     });
 
     form.addEventListener("submit", (e) => {
-      e.preventDefault();
       let valid = true;
 
-      // name
       const nameVal = fields.name.value.trim();
+      const emailVal = fields.email.value.trim();
+      const phone = fields.whatsapp.value.replace(/\D/g, "");
+      const msg = fields.message.value.trim();
+
       if (nameVal.length < 3) {
         showError(
           "name",
-          lang === "es"
+          lang !== "en"
             ? "Ingrese un nombre válido (mínimo 3 caracteres)."
-            : "Please enter a valid name. (min 3 characters)"
+            : "Please enter a valid name (min 3 characters)."
         );
         valid = false;
       } else hideError("name");
 
-      // email (correct regex)
-      const emailVal = fields.email.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailVal)) {
         showError(
           "email",
-          lang === "es"
+          lang !== "en"
             ? "Ingrese un correo válido."
             : "Please enter a valid email."
         );
         valid = false;
       } else hideError("email");
 
-      // whatsapp (digits only)
-      const phone = fields.whatsapp.value.replace(/\D/g, "");
       if (!/^[0-9]{8,15}$/.test(phone)) {
         showError(
           "whatsapp",
-          lang === "es"
+          lang !== "en"
             ? "Ingrese un número válido (8–15 dígitos)."
-            : "Please enter a valid phone number.(8-15 digits)"
+            : "Please enter a valid phone number (8–15 digits)."
         );
         valid = false;
       } else hideError("whatsapp");
 
-      // message optional but if present must be >=10 chars
-      const msg = fields.message.value.trim();
-      if (msg.length > 0 && msg.length < 10) {
+      if (msg.length < 10) {
         showError(
           "message",
-          lang === "es"
+          lang !== "en"
             ? "El mensaje debe tener al menos 10 caracteres."
             : "The message must be at least 10 characters long."
         );
         valid = false;
       } else hideError("message");
 
-      // terms
       if (!fields.terms.checked) {
         showError(
           "terms",
-          lang === "es"
+          lang !== "en"
             ? "Debe aceptar los términos y condiciones."
             : "You must accept the terms and conditions."
         );
@@ -271,17 +279,16 @@ const { content } = Astro.props;
 
       if (!valid) {
         successMsg.classList.add("hidden");
+        e.preventDefault(); // ❗ Evita enviar si no es válido
         return;
       }
 
-      // success
-      successMsg.classList.remove("hidden");
-      // aquí podrías enviar los datos a tu API con fetch()
-      // ejemplo: fetch('/api/lead', { method:'POST', body: JSON.stringify({ name: nameVal, email: emailVal, phone, msg }) })
+      // 🌐 Actualiza el redirect dinámicamente antes del envío
+      const redirectInput = form.querySelector('input[name="redirect"]');
+      const langPath = lang === "en" ? "/en" : "/es";
+      redirectInput.value = `${window.location.origin}${langPath}/thanks`;
 
-      form.reset();
-      // ocultar success después de un rato
-      setTimeout(() => successMsg.classList.add("hidden"), 3500);
+      // ⚠️ No hacemos preventDefault aquí para permitir el envío a Web3Forms
     });
   });
 </script>

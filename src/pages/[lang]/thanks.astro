@@ -1,0 +1,81 @@
+---
+import "../../styles/global.css";
+import Logo from "../../components/Logos/Logo.astro";
+
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+const path = Astro.request.url;
+const lang = path.includes("/en/") ? "en" : "es";
+
+const messages = {
+  es: {
+    title: "¡Gracias por tu mensaje!",
+    subtitle: "Tu formulario fue enviado con éxito.",
+    paragraph:
+      "Nos pondremos en contacto contigo lo antes posible. Agradecemos tu interés en Tequila Cuernavaca.",
+    button: "Volver al inicio",
+  },
+  en: {
+    title: "Thank you for your message!",
+    subtitle: "Your form has been sent successfully.",
+    paragraph:
+      "We’ll get back to you as soon as possible. Thank you for your interest in Tequila Cuernavaca.",
+    button: "Back to home",
+  },
+};
+const t = lang === "en" ? messages.en : messages.es;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{t.title}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Favicon para modo oscuro -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+
+  <body
+    class="min-h-screen flex flex-col justify-center items-center text-center bg-black text-gray-800 font-sans px-6"
+  >
+    <div class="max-w-md flex flex-col items-center">
+      <div class="mb-6">
+        <Logo />
+      </div>
+      <h1
+        class="text-4xl
+        font-bold
+        text-black
+        mb-3
+        text-white"
+      >
+        {t.title}
+      </h1>
+      <h2 class="text-xl text-yellow-600 font-semibold mb-2">
+        {t.subtitle}
+      </h2>
+      <p class="text-gray-700 mb-8 leading-relaxed text-white">{t.paragraph}</p>
+
+      <a
+        href={lang === "en" ? "/en" : "/"}
+        class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-medium py-3 px-6 rounded-md transition-colors"
+      >
+        {t.button}
+      </a>
+    </div>
+  </body>
+</html>

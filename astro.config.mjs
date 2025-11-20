@@ -11,7 +11,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  base: isDev ? "/" : "/cuernavaca_landing/",
+  site: "https://simon1691.github.io/",
+  base: isDev ? "/" : "",
   outDir: "./dist",
   build: {
     assets: "assets",

@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Roboto', sans-serif;
+    --font-sans: 'Red Hat Display', sans-serif;
+    --font-serif: 'Baskervville', serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+h1,h2,h3,h4 {
+  font-family: var(--font-serif);
 }

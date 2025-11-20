@@ -42,7 +42,7 @@ const { content } = Astro.props;
                 key={index + 1}
                 name={item.name}
                 description={item.description}
-                image={`./${item.image}`}
+                image={item.image}
               />
             </div>
           ))

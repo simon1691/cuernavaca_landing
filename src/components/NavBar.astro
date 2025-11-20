@@ -1,5 +1,5 @@
 ---
-import Logo from "./Logos/Logo.astro";
+import TextLogo from "./Logos/TextLogo.astro";
 // const links = [
 //   { name: "Inicio", href: "#header" },
 //   { name: "Historia", href: "#historia" },
@@ -8,7 +8,7 @@ import Logo from "./Logos/Logo.astro";
 //   { name: "Experiencias", href: "#experiencias" },
 // ];
 
-const { content, lang } = Astro.props;
+const { content, lang = "es" } = Astro.props;
 const otherLang = lang === "es" ? "en" : "es";
 
 console.log(content);
@@ -18,7 +18,9 @@ console.log(content);
   <div class="hidden md:block bg-black">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
       <!-- Logo -->
-      <a href="/"><Logo /></a>
+      <div class="w-60">
+        <a href="/"><TextLogo /></a>
+      </div>
 
       <!-- Desktop Links -->
       <ul class="hidden md:flex items-center space-x-8 text-white">
@@ -40,7 +42,9 @@ console.log(content);
         </li>
         <li>
           <a
-            href={`/${otherLang}/`}
+            href={otherLang === "es"
+              ? `${import.meta.env.BASE_URL}`
+              : `${import.meta.env.BASE_URL}${otherLang}/`}
             class="uppercase border border-white px-3 py-1 rounded"
           >
             {otherLang}
@@ -54,7 +58,9 @@ console.log(content);
       class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 bg-black"
     >
       <!-- Logo -->
-      <a href="header" onClick={(e) => e.preventDefault()}><Logo /></a>
+      <div class="w-40">
+        <a href="header" onClick={(e) => e.preventDefault()}><TextLogo /></a>
+      </div>
 
       <!-- Mobile Menu Button -->
       <button id="menu-btn" class="md:hidden text-white focus:outline-none">
@@ -92,7 +98,7 @@ console.log(content);
     </div>
     <div
       id="mobile-menu"
-      class="fixed top-[96px] w-full h-[auto] bg-black text-white hidden flex-col px-10 pt-8 pb-10 z-30 border-t-2 border-white"
+      class="fixed top-[64px] w-full h-[auto] bg-black text-white hidden flex-col px-10 pt-8 pb-10 z-30 border-t-2 border-white"
     >
       <ul class="flex flex-col items-start gap-6 text-lg">
         {
@@ -110,7 +116,9 @@ console.log(content);
         }
         <li>
           <a
-            href={`/${otherLang}/`}
+            href={otherLang === "es"
+              ? `${import.meta.env.BASE_URL}`
+              : `${import.meta.env.BASE_URL}${otherLang}/`}
             class="uppercase border border-white px-3 py-1 rounded"
           >
             {otherLang}

@@ -16,8 +16,9 @@ header: {
     subtitle: "The spirit of Mexico in its purest form.",
     button: "I want to live the experience"
 },
+
 history: {
-    title: "We’re not just tequila. We are the spirit of Mexico turned into a ritual.",
+    title: "We’re not just Tequila... We are the spirit of Mexico turned into a ritual!",
     paragraph: "In the sacred lands of Cuernavaca, where agave fields whisper to the wind, a unique elixir is born from carefully selected blue agaves. Every drop captures the strength of the volcanoes, the patience of agave, and the legacy of our ancestors."
 },
 collection: {
@@ -27,7 +28,7 @@ collection: {
   data: [
     {
       id: "tequila_blanco",
-      title: "CUERNAVACA BLANCO TEQUILA",
+      title: "BLANCO",
       description:
         "100% Agave Blanco Tequila, crystal-clear and clean to the eye, characterized by its herbal and fruity aromas.",
       longdescription: `100% Agave Blanco Tequila, crystal-clear and clean to the eye, characterized by its herbal and fruity aromas.
@@ -48,7 +49,7 @@ collection: {
     },
     {
       id: "tequila_blanco_rosado",
-      title: "CUERNAVACA ROSÉ BLANCO TEQUILA",
+      title: "ROSÉ BLANCO",
       description:
         "100% Agave Blanco Tequila, pinkish and smooth in appearance. Characterized by its herbal and fruity aromas.",
       longdescription: `100% Agave Blanco Tequila, pinkish and smooth in appearance. Characterized by its herbal and fruity aromas. 
@@ -69,7 +70,7 @@ collection: {
     },
     {
       id: "tequila_reposado",
-      title: "CUERNAVACA REPOSADO TEQUILA",
+      title: "REPOSADO",
       description:
         "100% Agave Reposado Tequila, visually appealing with a bright straw hue, containing soft notes from aging.",
       longdescription: `100% Agave Reposado Tequila, visually appealing with a bright straw hue, containing soft notes from aging.
@@ -90,7 +91,7 @@ collection: {
     },
     {
       id: "tequila_anejo",
-      title: "CUERNAVACA AÑEJO TEQUILA",
+      title: "AÑEJO",
       description:
         "100% Agave Añejo Tequila, golden amber in color, with sweet floral aromas and prominent aging notes of oak, grape, almond, and vanilla.",
       longdescription: `100% Agave Añejo Tequila, golden amber in color, with sweet floral aromas and prominent aging notes of oak, grape, almond, and vanilla.
@@ -110,7 +111,7 @@ collection: {
     },
     {
       id: "tequila_anejo_cristalino",
-      title: "CUERNAVACA CRISTALINO AÑEJO TEQUILA",
+      title: "CRISTALINO AÑEJO",
       description:
         "100% Agave Añejo Tequila, completely crystal-clear in appearance, with sweet floral aromas and prominent aging notes of oak, grape, almond, and vanilla.",
       longdescription: `100% Agave Añejo Tequila, completely crystal-clear in appearance, with sweet floral aromas and prominent aging notes of oak, grape, almond, and vanilla.
@@ -130,7 +131,7 @@ collection: {
     },
     {
       id: "tequila_extra_anejo",
-      title: "CUERNAVACA EXTRA AÑEJO TEQUILA",
+      title: "EXTRA AÑEJO",
       description:
         "100% Agave Extra Añejo Tequila, deep reddish color, with strong aromatic notes of profound aging, mainly toasted oak, prune, sandalwood, and hazelnut.",
       longdescription: `100% Agave Extra Añejo Tequila, deep reddish color, with strong aromatic notes of profound aging, mainly toasted oak, prune, sandalwood, and hazelnut.

@@ -13,7 +13,7 @@ nav:{
 contact: "Contact",
 },
 header: {
-    subtitle: "The spirit of Mexico in its purest form.",
+    subtitle: "The spirit of Mexico lives in <br><strong>Casa Cuernavaca</strong>",
     button: "I want to live the experience"
 },
 
@@ -45,7 +45,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_blanco.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
     {
       id: "tequila_blanco_rosado",
@@ -66,7 +66,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_blanco_rosado.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
     {
       id: "tequila_reposado",
@@ -87,7 +87,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_reposado.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
     {
       id: "tequila_anejo",
@@ -107,7 +107,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_anejo.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
     {
       id: "tequila_anejo_cristalino",
@@ -127,7 +127,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_anejo_cristalino.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
     {
       id: "tequila_extra_anejo",
@@ -147,7 +147,7 @@ collection: {
         presentation: "Bottle",
       },
       imageUrl: "tequila_extra_anejo.png",
-      buttonText: "Book the experience",
+      buttonText: "Live the experience",
     },
   ],
 },
@@ -158,7 +158,7 @@ ritual: {
    <strong> Every bottle of Cuernavaca represents a legacy of quality and authenticity.</strong/>`
 },
 references: {
-  title: "A tequila that is not only drunk, but celebrated.",
+  title: "A tequila that's not just sipped, but celebrated.",
   data: [
     {
       name: "Mariana López",

@@ -13,7 +13,7 @@ nav:{
     contact: "Contacto",
 },
 header: {
-    subtitle: "El espíritu de México en su forma más pura.",
+    subtitle: `El espíritu de México en <br><strong>Casa Cuernavaca</strong>`,
     button: "Quiero vivir la experiencia"
 },
 history: {
@@ -46,7 +46,7 @@ collection: {
       presentation: "Botella",
     },
     imageUrl: "tequila_blanco.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
   {
     id: "tequila_blanco_rosado",
@@ -66,7 +66,7 @@ collection: {
       presentation: "Botella",
     },
     imageUrl: "tequila_blanco_rosado.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
   {
     id: "tequila_reposado",
@@ -87,7 +87,7 @@ collection: {
       presentation: "Botella",
     },
     imageUrl: "tequila_reposado.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
   {
     id: "tequila_anejo",
@@ -107,7 +107,7 @@ collection: {
       presentation: "Botella",
     },
     imageUrl: "tequila_anejo.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
   {
     id: "tequila_anejo_cristalino",
@@ -127,7 +127,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
       presentation: "Botella",
     },
     imageUrl: "tequila_anejo_cristalino.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
   {
     id: "tequila_extra_anejo",
@@ -147,7 +147,7 @@ Sabores a canela, caramelo y frutos rojos con un remanente especiado principalme
       presentation: "Botella",
     },
     imageUrl: "tequila_extra_anejo.png",
-    buttonText: "Reserva la experiencia",
+    buttonText: "Vive la experiencia",
   },
 ]
 },

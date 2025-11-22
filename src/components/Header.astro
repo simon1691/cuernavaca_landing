@@ -14,7 +14,7 @@ const { content } = Astro.props;
 
   <!-- 🔳 Top gradient overlay -->
   <div
-    class="absolute top-[0px] md:top-0 left-0 w-full h-[90px] md:h-[250px] bg-gradient-to-b from-black via-black/60 via-70% to-transparent z-10"
+    class="absolute top-[0px] md:top-[60px] left-0 w-full h-[90px] md:h-[150px] bg-gradient-to-b from-black via-black/60 via-50% to-transparent z-10"
   >
   </div>
 
@@ -34,9 +34,9 @@ const { content } = Astro.props;
   </video>
 
   <!-- 🧾 Content -->
-  <div class="relative z-20 px-10 md:px-6 text-white max-w-[650px]">
-    <h1 class="mb-10 mt-12 text-3xl md:text-6xl font-sans">
-      {content.subtitle}
+  <div class="relative z-20 px-10 md:px-6 text-white max-w-[800px]">
+    <h1 class="mb-10 mt-12 text-3xl md:text-6xl font-sans  leading-[115%]" set:html={content.subtitle}>
+      
     </h1>
   </div>
 
